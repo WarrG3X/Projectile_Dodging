@@ -7,6 +7,13 @@ import yaml
 
 fid = 0
 status = 0
+N_FRAMES = 7
+IMG_BUFFER = []
+X_BUFFER = []
+Y_BUFFER = []
+R_BUFFER = []
+
+
 
 def load_values():
     with open("config.yaml","r") as file:
@@ -35,7 +42,10 @@ def detect(f):
         centre,radius = (int(x),int(y)),int(radius)
         cv2.circle(res,centre,radius,(0,255,0),2)
         cv2.circle(f,centre,radius,(0,255,0),2)
-        cv2.imwrite('temp/'+str(fid)+'.jpg',res)
+        X_BUFFER.append(round(x,3))
+        Y_BUFFER.append(round(y,3))
+        R_BUFFER.append(radius)
+        IMG_BUFFER.append(res)
         fid += 1
 
         if(status)<0:
@@ -77,5 +87,55 @@ while True:
         break
 
 print "Frames = ",fid
+
+if fid < N_FRAMES:
+    print "Insufficient Frames"
+    exit()
+
+X_BUFFER =  X_BUFFER[-N_FRAMES:]
+Y_BUFFER =  Y_BUFFER[-N_FRAMES:]
+R_BUFFER =  R_BUFFER[-N_FRAMES:]
+IMG_BUFFER = IMG_BUFFER[-N_FRAMES:]
+
+#Preview
+idx = 0
+while True:
+    cv2.imshow('Console',IMG_BUFFER[idx])
+    time.sleep(0.1)
+    idx += 1
+    if idx == N_FRAMES:
+        idx = 0
+
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+         break
+
 cv2.destroyAllWindows()
 c.release()
+
+
+label = 0
+label_dict ={1:"lefthand",2:"righthand",3:"leftleg",4:"rightleg",
+        5:"torso",6:"miss",7:"cancel"}
+while label not in range(1,8):
+    for k,v in label_dict.items():
+        print k,v
+    label = int(raw_input("Enter Label - "))
+    
+if label == 7:
+    print "Exiting"
+    exit()
+
+row_val = 33
+
+print "Saving Images"
+for i in range(1,N_FRAMES+1):
+        path = 'image_db/'+label_dict[label]+'/'+str(row_val)+'-'+str(i)+'.jpg'
+        print path
+        cv2.imwrite(path,IMG_BUFFER[i-1])
+
+
+
+
+
+
+

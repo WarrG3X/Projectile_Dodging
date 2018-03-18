@@ -1,0 +1,9 @@
+param:
+  U: 121
+  V: 97
+  Y: 228
+  dil_iter: 10
+  erode_iter: 4
+  u: 29
+  v: 27
+  y: 0

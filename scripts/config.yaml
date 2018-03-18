@@ -1,8 +1,8 @@
 param:
   U: 121
-  V: 97
+  V: 85
   Y: 228
-  dil_iter: 10
+  dil_iter: 13
   erode_iter: 4
   u: 29
   v: 27

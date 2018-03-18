@@ -3,6 +3,7 @@ import os
 import time
 import numpy as np
 import yaml
+from createcsv import writecsv
 
 
 fid = 0
@@ -125,7 +126,9 @@ if label == 7:
     print "Exiting"
     exit()
 
-row_val = 33
+
+print "Writing to CSV File"
+row_val = writecsv(X_BUFFER,Y_BUFFER,R_BUFFER,label)
 
 print "Saving Images"
 for i in range(1,N_FRAMES+1):

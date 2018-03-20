@@ -1,9 +1,9 @@
 param:
-  U: 96
+  U: 95
   V: 174
   Y: 255
   dil_iter: 14
   erode_iter: 4
   u: 0
   v: 61
-  y: 68
+  y: 52

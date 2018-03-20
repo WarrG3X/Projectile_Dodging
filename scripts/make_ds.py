@@ -136,6 +136,17 @@ for i in range(1,N_FRAMES+1):
         print path
         cv2.imwrite(path,IMG_BUFFER[i-1])
 
+print
+print
+print "Class Count - "
+print "1 Lefthand - ",len(os.listdir("image_db/lefthand/"))/7.0
+print "2 Righthand - ",len(os.listdir("image_db/righthand/"))/7.0
+print "3 Leftleg - ",len(os.listdir("image_db/leftleg/"))/7.0
+print "4 Rightleg - ",len(os.listdir("image_db/rightleg/"))/7.0
+print "5 Torso - ",len(os.listdir("image_db/torso/"))/7.0
+print "6 Miss - ",len(os.listdir("image_db/miss/"))/7.0
+
+
 
 
 

@@ -16,8 +16,8 @@ def load_values():
 c = cv2.VideoCapture(1)
 c.set(6,1196444237.0)
 width,height = c.get(3),c.get(4)
-print "Frame Width/Height : ", width, height
-print "FPS : ",c.get(5)
+print("Frame Width/Height : ", width, height)
+print("FPS : ",c.get(5))
 
 while True:
     _,f = c.read()

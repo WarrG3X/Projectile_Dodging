@@ -31,7 +31,7 @@ def load_console_values():
             cv2.setTrackbarPos("Erode","Console",data['erode_iter'])
             cv2.setTrackbarPos("Dilate","Console",data['dil_iter'])
             cv2.setTrackbarPos("Mode","Console",0)
-            print values
+            print(values)
 
     except:
         pass
@@ -45,7 +45,7 @@ def write_console_values():
     param_dict = {"param" : config_dict}
     with open("config.yaml",'w') as file:
         yaml.dump(param_dict,file,default_flow_style=False)
-        print "Config Updated"
+        print("Config Updated")
 
 cv2.namedWindow('Console')
 cv2.createTrackbar('Lower Y','Console',0,255,lambda x:x)
@@ -62,8 +62,8 @@ cv2.createTrackbar('Mode','Console',0,2,lambda x:x)
 c = cv2.VideoCapture(1)
 c.set(6,1196444237.0)
 width,height = c.get(3),c.get(4)
-print "Frame Width/Height : ", width, height
-print "FPS : ",c.get(5)
+print("Frame Width/Height : ", width, height)
+print("FPS : ",c.get(5))
 load_console_values()
 
 while True:

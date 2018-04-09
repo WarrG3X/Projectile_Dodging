@@ -4,6 +4,6 @@ param:
   Y: 255
   dil_iter: 14
   erode_iter: 4
-  u: 5
+  u: 0
   v: 61
-  y: 92
+  y: 52
